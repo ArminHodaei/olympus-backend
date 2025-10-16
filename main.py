@@ -4,10 +4,9 @@ from fastapi.responses import JSONResponse
 app = FastAPI()
 
 @app.post("/olympus")
-async def interact_with_olympus(request: Request):
+async def ask_olympus(request: Request):
     body = await request.json()
-    mode = body.get("mode", "unknown")
+    prompt = body.get("prompt", "")
     return JSONResponse(content={
-        "mode": mode,
-        "response": f"Olympus is in {mode} mode. Ready to help."
+        "response": f"Olympus received your question: '{prompt}'. (This is a placeholder — you can customize this response.)"
     })
